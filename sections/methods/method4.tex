@@ -1,0 +1,26 @@
+\subsection{Temporal Inference}
+During inference, we are given only the start observation $V_s$ and the goal observation $V_g$. The task class is predicted using the trained task classifier, eliminating the need for ground truth as required during training. Thus, we add latent temporal and logic features from interpolation to guide the U-Net. To generate samples from the learned action sequence distribution, we begin with Gaussian noise and iteratively apply denoising and condition projection for $N$ iterations.
+
+After obtaining the predicted output $\hat{x}_0$, we extract the dimensions of the action sequence $[\hat{a}_1, \ldots, \hat{a}_T]$ and determine the action sequence plan by selecting the index of the maximum value in each $\hat{a}_i$ ($i = 1, \ldots, T$). It is important to note that during training, the class condition dimensions of $\hat{x}_0$ are derived from the true task labels, unlike in the inference phase where they are based on the output of our task-classifier.
+
+In contrast to \citet{wang2023pdpp}, we utilize DDIM (Denoising Diffusion Implicit Models) as the denoising model instead of DDPM (Denoising Diffusion Probabilistic Models), which results in improved performance and faster speed.
+
+\begin{comment}
+\begin{algorithm}[t]
+    \caption{Training}
+    \begin{algorithmic}[1]
+        \Require Initial input $x_0$, total diffusion steps number $N$, model $f_\theta$, $\{\overline{\alpha}_n\}_{n=1}^{N}$, Gt task class $c$
+        \State $a_0^m=a_0[0,0,1...0,1]$($a$ in the steps related to $c$ takes the value `1', otherwise takes the value `0'$)$
+        \Repeat
+        \State $n \sim Uniform(\{1,...,N\})$
+        \State $\epsilon \sim \mathcal{N}(0, I)$
+        \State $x_n^m = \sqrt{\overline{\alpha}_n}x_0^m + \sqrt{1 - \overline{\alpha}_n}\epsilon$
+        \State $\hat{x}_0^m = f_\theta(Proj(x_n^m), n)$
+        \State Take gradient descent step on
+        \State \quad $\bigtriangledown_\theta \left |\left | \left (x_0 - Proj(\hat{x}_0) \right ) * w_t * m_{b,t,i}\right | \right |^2$
+        \Until converged
+        
+    \end{algorithmic}
+    \label{train_alg}
+\end{algorithm}
+\end{comment}

@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\caption{Comparison with other methods on CrossTask dataset.}
+\vspace{-3mm}
+\scalebox{0.92}{
+\begin{tabular}{lccccccccc}
+\toprule
+& \multicolumn{3}{c}{$T$ = 3} & & \multicolumn{3}{c}{$T$ = 4} & $T$=5 & $T$ = 6 \\ 
+\cline{2-4} \cline{6-8}
+{Models}           & SR$\uparrow$    & mAcc$\uparrow$   & mIoU$\uparrow$  &   & SR$\uparrow$    & mAcc$\uparrow$   & mIoU$\uparrow$  & SR$\uparrow$ & SR$\uparrow$ \\ \midrule
+{Random} &   $<$0.01    &    0.94    &   \color{gray}1.66    &   &   $<$0.01    &    0.83    &   \color{gray}1.66   & $<$0.01 & $<$0.01  \\
+{Retrieval-Based}   &   8.05    &   23.30     &   \color{gray}32.06    &   &   3.95    &    22.22    &    \color{gray}36.97   & 2.40 & 1.10  \\
+{WLTDO}            &   1.87    &    21.64    &   \color{gray}31.70   &    &   0.77    &    17.92    &    \color{gray}26.43  & --- & ---  \\
+{UAAA}             &   2.15    &   20.21     &   \color{gray}30.87   &    &   0.98    &   19.86     &  \color{gray}27.09   & --- & ---   \\
+{UPN}               &   2.89    &    24.39    &   \color{gray}31.56     &  &   1.19    &   21.59     &   \color{gray}27.85   & --- & ---  \\
+{DDN}              &   12.18    &    31.29    &    \color{gray}47.48    &  &   5.97    &    27.10    &    \color{gray}48.46  & 3.10 & 1.20  \\
+{PlaTe}              &   16.00    &    36.17    &    \color{gray}65.91   &   &   14.00    &    35.29    &    \color{gray}55.36   & --- & --- \\
+{Ext-GAIL}         &   21.27    &   49.46     &   \color{gray}61.70    &   &   16.41    &    43.05    &   \color{gray}60.93   & --- & ---  \\
+{P$^3$IV}             &   23.34    &   49.96     &   \color{gray}73.89   &    &   13.40    &   44.16     &   \color{gray}70.01  & 7.21 & 4.40   \\
+{EGPP}             & 26.40 & 53.02 & \color{gray}\underline{74.05} & & 16.49 & 48.00 & \color{gray}\underline{70.16} & 8.96 & 5.76 \\
+{PDPP$\dagger$ }             &   37.2 & 64.67 &  66.57  &  &  21.48 &  57.82 &  65.13 &  13.45 &  8.41 \\
+{KEPP$\dagger$ }             &   38.12 & \underline{64.74} &  \underline{67.15}  &  &  24.15 &  \underline{59.05} &  \underline{66.64} &  14.20 &  9.27 \\
+{SCHEMA$\dagger$}             &   \underline{38.93} & 63.80 & \bf \color{gray}79.82 &  &  \underline{24.50} &  58.48 &  \bf \color{gray}76.48 &  \underline{14.75} & \bf  10.53 \\
+\midrule
+{MTID (Ours)$\dagger$}             &   \bf 40.45 & \bf 67.19 & \bf 69.17  &  & \bf 24.76 & \bf 60.69 &  \bf 67.67 & \bf 15.26 & \underline{10.30} \\
+\bottomrule
+\end{tabular}
+}
+
+\label{tab:crosstask}
+\end{table}

@@ -1,0 +1,10 @@
+\section{Related Work}
+\label{gen_inst}
+\textbf{Procedure Planning in Instructional Videos.} focuses on making goal-directed plans given the current visual observations in unstructured real-life videos. 
+In this work, we follow formulation of PDPP~\citep{wang2023pdpp}  of procedure planning. 
+Early work framed the task as sequential latent space~\citep{chang2020procedure} and used adversarial policy learning~\citep{bi2021procedure}. 
+Several methods have been proposed to enhance planning, such as replacing visual states with linguistic supervision to predict steps~\citep{zhao2022p3iv}, modeling action sequence distribution using diffusion models~\citep{wang2023pdpp}, applying mask-and-predict strategies to mine step relationships~\citep{wang2023event}, and breaking sequences into shorter sub-chains by skipping unreliable actions~\citep{li2023skip}. 
+Recently, KEPP~\citep{nagasinghe2024not} similarly integrates probabilistic procedural knowledge for complex step sequencing. And SCHEMA~\citep{niu2024schema} focuses on tracking state changes at each step. 
+Our approach builds on these, aiming for more efficient, accurate planning by utilizing the calculated temporal logical relationships. 
+
+\textbf{Diffusion Probabilistic Models for Long Video Generation.} Recent advancements in diffusion probabilistic models~\citep{croitoru2023diffusion} , initially popularized in image generation~\citep{rombach2022high}, have shown promising results in generating high-quality long video sequences~\citep{weng2024art,zhou2024upscale,jiang2024videobooth}. For example, StreamingT2V~\citep{henschel2024streamingt2v} enables the creation of temporally consistent long videos with smooth transitions and high frame-level image quality, extending beyond typical short video generation limitations. StoryDiffusion~\citep{zhou2024storydiffusion}, a method incorporating Consistent Self-Attention to enhance coherence in generated sequences of images or videos, allows for the creation of visually consistent stories with rich detail. These advancements address challenges like maintaining temporal coherence and generating realistic motion in longer video sequences. 

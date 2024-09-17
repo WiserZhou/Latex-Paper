@@ -1,0 +1,42 @@
+\subsection{Task-Adaptive Masked Proximity Loss}
+Our training process consists of two main stages: (a) training a task classifier model \( T_{\phi}(c|V_s, V_g) \) to derive conditional guidance based on the given start and goal observations; (b) utilizing masked temporal interpolation diffusion to model and fit the distribution of the target action sequence.
+
+In the first stage, we employ a transformer-based model to predict the task class \( c \) given the start observation \( V_s \) and goal observation \( V_g \). The ground-truth task class labels \( c \) serve as supervision, and the objective is to minimize the cross-entropy loss between the predicted task scores and the true task class. The CE~\citep{mannor2005cross} loss is formulated as:
+\begin{equation}
+    \mathcal{L}_{\mathrm{class}} = -\sum_{i=1}^{C} y_i \log(\hat{y}_i),
+\end{equation}
+where \( C \) is the total number of task classes, \( y_i \) is the ground-truth probability of task class \( i \), and \( \hat{y}_i \) is the predicted probability of task class \( i \). This loss function encourages the model to assign high probabilities to the correct task class while minimizing the likelihood of incorrect classes, thus effectively learning to classify tasks based on input observations.
+
+In the second stage, we adapt a diffusion-based training scheme to model the target action sequence. Specifically, we modify the learning objective to incorporate the initial input \( \hat{x}_0 \) through a U-Net model~\citep{ronneberger2015u} denoted as \( f_{\theta}(\hat{x}_{b,t,i}) \), which is parameterized by \( \theta \). The training loss for this stage is defined as:
+\begin{equation}
+\mathcal{L}_{\mathrm{diff}} = \sum_{b=1}^{B} \sum_{t=1}^{T} \sum_{i=d_c}^{d_c+d_a}  m_{b,t,i} \cdot w_t \cdot (f_{\theta}(x_{b,t,i}) - x_0)^2,
+\end{equation}
+where \( \mathcal{L}_{\mathrm{diff}} \) is the total loss, \( B \) represents the batch size, \( T \) is the number of horizon steps in the diffusion process, \( d_c \) corresponds to the dimension associated with task classes, and \( d_a \) represents the dimension corresponding to actions. The term \( f_{\theta}(x_{b,t,i}) \) refers to the model’s predicted value at batch index \( b \), horizon step \( t \), and dimension \( i \), while \( x_0 \) represents the target value.
+
+A key component of the loss function is the weight term \( w_t \), which varies across horizon steps \( t \). It is defined as:
+\begin{equation}
+w_t = 
+\begin{cases}
+\text{linspace}(w_0, 1, \lceil T/2 \rceil)_t & \text{if } t \leq \lceil T/2 \rceil \\
+\text{linspace}(w_0, 1, \lceil T/2 \rceil)_{T-t+1} & \text{if } t > \lceil T/2 \rceil
+\end{cases},
+\end{equation}
+where \( T \) is the total number of horizon steps, and \( w_0 \) is the initial weight. The weighting scheme assigns higher weights to predictions near the endpoints \( V_s \) and \( V_g \), where accuracy is higher, and lower weights to the middle, where accuracy is lower. This approach leverages more reliable endpoint information for improved performance.
+
+The function \( \text{linspace}(a, b, n)_i \) is defined as:
+\begin{equation}
+   \text{linspace}(a, b, n)_i = a + (b - a) \cdot \frac{i - 1}{n - 1}, 
+\end{equation}
+which linearly interpolates between \( a \) and \( b \) over \( n \) points.
+
+
+Additionally, \( m_{b,t,i} \) is a mask applied to selectively weight certain time steps and dimensions more heavily. The mask \( m_{b,t,i} \) is defined as:
+\begin{equation}
+      m_{b,t,i} = \begin{cases}
+    \alpha & \text{if mask}_{b,t,i} = 1 \\
+    1 & \text{otherwise}
+  \end{cases},
+\end{equation}
+where \( \alpha \) is a scaling coefficient applied when the mask is active, enhancing the importance of certain elements in the loss. In our implementation, \( \alpha \) is set to 1.1, and $w_0$ is set to 6.
+
+Thus, the total loss represents a weighted mean squared error (MSE) between the predicted and target values, where the weights vary temporally and are further modulated by a mask that emphasizes specific dimensions or time steps based on the task requirements.

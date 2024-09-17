@@ -1,0 +1,105 @@
+\section*{Appendix}
+\appendix
+\section{IMPLEMENTATION DETAILS}
+In Section \ref{method2}, we presented the framework of our MTID. Additional details on the implementation of the model, encompassing both its architecture and training procedures, are provided in the appendix.
+
+\textbf{Details of model architecture.}Our state decoder and step decoder are Transformer-based models. The model consists of two blocks. Each block consists of one
+self-attention module, one cross-attention module, and a two-layer projection module.The input
+query is first processed by the self-attention module, then forwarded to the cross-attention module,
+and processed by the projection module. The cross-attention module takes the external memory to
+calculate the keys and values. Each self-attention and cross-attention module consists of 32 heads
+and the hidden layer size is set as 128. The step classifier is a two-layer MLP with hidden size of 128.
+The dropout ratio is 0.2.\textbf{need to reconfirm}
+
+\textbf{Details of training.}We utilize a linear warm-up approach for training our model. The specific training protocols vary across different datasets due to their varying scales. For the \texttt{CrossTaskBase} dataset, the diffusion step is set to 200, and training is conducted over 12,000 steps. The learning rate is increased linearly to \(8 \times 10^{-4}\) during the first 4,000 steps and then reduced to \(4 \times 10^{-4}\) at step 10,000. For the \texttt{CrossTaskHow} dataset, we maintain a diffusion step of 200 and extend training to 24,000 steps. Here, the learning rate rises linearly to \(5 \times 10^{-4}\) over the first 4,000 steps, followed by a reduction by a factor of 0.5 at steps 10,000, 16,000, and 22,000. In the case of the \texttt{NIV} dataset, with a diffusion step of 50, we perform training for 6,500 steps due to its smaller size. The learning rate increases linearly to \(3 \times 10^{-4}\) over the initial 4,500 steps and then decays by 0.5 at step 6,000. For the \texttt{COIN} dataset, which requires more extensive training due to its large scale, we set the diffusion step to 200 and train for 160,000 steps. The learning rate is increased linearly to \(1 \times 10^{-5}\) within the first 4,000 steps, and then it is reduced by a factor of 0.5 at steps 14,000 and 24,000, with the rate remaining at \(2.5 \times 10^{-6}\) for the remaining steps. The batch size for all experiments is set to 256, and we use a weighted loss with \(w = 10\). All experiments are executed using ADAM \cite{23} on 8 NVIDIA RTX 3090 GPUs.
+
+\section{Baseline Methods}
+In this section, we describe the baseline methods employed in our study.
+\begin{itemize}
+    \item \textbf{Random Selection.} This strategy involves randomly choosing actions from the available action space within the dataset to generate plans.
+    \item \textbf{Retrieval-Based Approach.} For the given observations \(\{os, og \}\), this method retrieves the closest matching neighbor by evaluating the minimum visual feature distance in the training dataset. The action sequence associated with the retrieved neighbor is then used as the plan.
+    \item \textbf{WLT DO \cite{10}.} This method utilizes a recurrent neural network (RNN) to forecast action steps based on the provided pairs of observations.
+    \item \textbf{UAAA \cite{11}.} The UAAA technique is a two-stage process that leverages an RNN-HMM model to predict action steps in an autoregressive manner.
+    \item \textbf{UPN \cite{33}.} UPN is a path planning algorithm for physical environments that learns a plannable representation to generate predictions. To derive discrete action steps, a softmax layer is appended to the model's output as described in \cite{4}.
+    \item \textbf{DDN \cite{4}.} The DDN model is an autoregressive framework with two branches, designed to learn an abstract representation of action steps and predict transitions in the feature space.
+    \item \textbf{PlaTe \cite{34}.} The PlaTe model extends DDN by incorporating transformer modules in its two branches for prediction tasks. It is important to note that PlaTe's evaluation protocol differs from other models, so comparisons with PlaTe are included in the supplementary material.
+    \item \textbf{Ext-GAIL \cite{2}.} Ext-GAIL addresses procedure planning using reinforcement learning methods. Unlike our approach, Ext-GAIL splits the planning problem into two stages where the first stage provides long-horizon information for the second, whereas our goal is to derive sampling conditions.
+    \item \textbf{P3IV \cite{42}.} The P3IV model is a transformer-based single-branch approach that includes a learnable memory bank and an additional generative adversarial framework. Similar to our model, P3IV forecasts all action steps simultaneously during the inference phase.
+\end{itemize}
+
+\textbf{State Descriptions.}need to add the details
+
+\textbf{Results on COIN.}
+Table~\ref{tab:niv} presents the outcomes on the COIN dataset. Consistent with the findings from CrossTask and COIN, our MTID method demonstrates superior SR and mIoU scores and maintains competitive mAcc performance.
+We extract step sequences $a_{t:(t+T-1)}$ from the videos, where the horizon $T$ ranges from 3 to 6. Following~\citep{zhao2022p3iv,wang2023pdpp}, we generate action sequences $\{[a_i, ..., a_{i+T-1}]\}_{i=1}^{n-T+1}$ by sliding a window of size $T$ over the $n$ actions. For each sequence, the video clip feature at the start of action $a_i$ is used as the start observation $o_s$, and the feature at the end of $a_{i+T-1}$ as the goal state $o_g$, with both clips lasting 3 seconds.
+
+Previous works~\citep{chang2020procedure, bi2021procedure, sun2022plate} computed the mIoU metric over mini-batches, averaging the results across the batch size. However, this method introduces variability based on the batch size. For example, if the batch size is set to the size of the entire dataset, all predicted actions may be deemed correct. In contrast, using a batch size of one penalizes any mismatch between predicted and ground-truth sequences. To address this issue, we follow \citet{wang2023pdpp} by standardizing mIoU calculation, computing it for each individual sequence and then averaging the results, which effectively treats the batch size as one.
+\begin{table}[ht]
+\centering
+\begin{minipage}{\textwidth}
+\centering
+\caption{Comparisons on the NIV dataset.}
+\scalebox{0.92}{
+\begin{tabular}{l ccc c ccc}
+\toprule
+& \multicolumn{3}{c}{$T$ = 3} & & \multicolumn{3}{c}{$T$ = 4} \\ 
+\cline{2-4} \cline{6-8}
+{Models}           & SR$\uparrow$    & mAcc$\uparrow$   & mIoU$\uparrow$  &   & SR$\uparrow$    & mAcc$\uparrow$   & mIoU$\uparrow$ \\ \midrule
+Random       &   2.21    &    4.07    &    6.09    &  &   1.12    &    2.73    &    5.84    \\
+{DDN}              &   18.41    &    32.54    &    56.56    &  &   15.97    &    27.09    &    53.84    \\
+{Ext-GAIL}              &   22.11    &    42.20    &    65.93    &  &   19.91    &    36.31    &    53.84    \\
+{P$^3$IV}             &   24.68    &   49.01    &   74.29   &    &   20.14    &   38.36     &   67.29   \\
+{EGPP} &   26.05    &   \bf 51.24   &   75.81   &   &   21.37    &  \bf 41.96     &   74.90  \\
+\hline
+{SCHEMA (Ours)} & \bf 27.93 & 41.64 & \bf 76.77 & & \bf 23.26 & 39.93 & \bf 76.75 \\
+\bottomrule
+\end{tabular}
+}
+\label{tab:niv}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{minipage}{\textwidth}
+\centering
+\caption{The results of uncertain modeling on the CrossTask dataset.}%
+\scalebox{0.92}{
+\begin{tabular}{l l c c c c}
+\toprule %
+Metric & Method & $T=3$ & $T=4$ & $T=5$ & $T=6$ \\ %
+\midrule %
+\multirow{2}*{KL-Div $\downarrow$}
+&  Ours - deterministic & 4.03 & 4.31 & 4.49 & 4.65 \\ %
+&  Ours - probabilistic & \bf 3.62 & \bf 3.82 & \bf 3.92 & \bf 3.97 \\ %
+\midrule %
+\multirow{2}*{NLL $\downarrow$}
+&  Ours - deterministic & 4.55 & 5.11 & 5.46 & 5.71 \\ %
+&  Ours - probabilistic & \bf 4.15 & \bf 4.62 & \bf 4.88 & \bf 5.04 \\ 
+\midrule %
+\multirow{2}*{ModePrec $\uparrow$}
+&  Ours - deterministic & \bf 38.41 & \bf 26.67 & \bf 15.28 & 9.84 \\ %
+&  Ours - probabilistic & 38.32 & 26.46 & 14.99 & \bf 9.91 \\
+\midrule %
+\multirow{2}*{ModeRec $\uparrow$}
+&  Ours - deterministic & 25.59 & 13.63 & 6.27 & 3.37
+ \\ %
+&  Ours - probabilistic & \bf 37.70 & \bf 23.76 & \bf 13.85 & \bf 9.30 \\
+\bottomrule %
+\end{tabular}
+}
+\label{tab:unc}
+\end{minipage}
+
+\end{table}
+
+
+\section{Further Discussions}
+This section offers further discussion on related works and presents insights that were excluded from the main paper due to space limitations.
+
+\textbf{Limitations.}The limitations of our method are as follows. First, While the logic between the actions generated by our model is robust, there is still no guarantee of perfect alignment between the generated actions and the task. Instances of mismatches between them were observed in the experiments. This is a general challenge for procedure planning models, as The labels for multi-tasking and multi-action in the dataset are replaced by data ids,which will cause Problems with numerical calculations.To solve this challenge,we have tried to add the restriction of a masking mechanism to the iterative process, but it was ineffective due to interfering with the diffuse noise.Considering of the perfect performance of LLM,we tried to ues LLM to guide the process of generating actions,but the efficient of generation still falls short of our expectations.During our experiments, we found a way to add cross attention to U-Net at the same time and get a good results, but this method consumes a lot of resources, so we didn't use it.Secondly, our masking mechanism is not yet fully refined, leading to suboptimal performance on large-scale datasets. Further improvements are needed to enhance its effectiveness in handling more extensive and complex data. We will investigate further possibilities for applying Large Language Models (LLMs) to guide action generation and explore the use of generative Vision-Language Models (VLMs) for state description generation.
+
+\textbf{Differences from other mid-state prediction methods.} Our approach differs from existing mid-state prediction methods in several key ways: (1) \textit{Compared to PDPP and Skip-Plan:} PDPP uses task labeling to eliminate the need for costly intermediate supervision, while Skip-Plan reduces prediction uncertainty by bypassing intermediate state supervision and breaking down long sequences. However, both methods struggle to effectively capture and represent mid-state information. To address this, we introduce a novel supervision mechanism that leverages latent temporal and logical features to better handle the mid-state process. (2) \textit{Compared to PlaTe and Ext-GAIL:} PlaTe and Ext-GAIL operate under a fully supervised setting, whereas our method works in a weak supervision setting, significantly reducing the need for detailed annotations. (3) \textit{Compared to methods under weak supervision:} Recent approaches like SCHEMA also consider weak supervision and annotate mid-states. However, SCHEMA focuses more on tracking and representing state changes, treating the process holistically without the need for labeling each intermediate state. In contrast, our method introduces explicit mid-state supervision for the first time and has achieved strong results, demonstrating the effectiveness of our approach.
+
+\textbf{Comparisons with related works.}%还没决定要不要写这一部分，SCHE的这一部分是做的跟他相似工作的一个比较，但是你这个emmmmm，感觉找不到那么相关的工作，还在纠结
+
+\textbf{Generalization capabilities.} Our method effectively addresses variations in action steps, object states, and environmental conditions. For action step variations, we tested the method with steps of different lengths, ranging from 3 to 6. The experimental results showed that our approach consistently surpassed state-of-the-art models. In terms of object states and environmental contexts, the benchmark datasets used for evaluation span a wide range of topics and domains, such as cooking, housework, and car maintenance, as well as diverse objects like fruits, drinks, and household items. For example, the CrossTask dataset includes 133 types of steps across 18 tasks, while the COIN dataset features 778 step types over 180 tasks. Testing on these datasets highlights the model's ability to generalize across varying object states and environmental conditions.

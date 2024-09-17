@@ -1,0 +1,22 @@
+\subsubsection{Diffusion Models and DDIM (Denoising Diffusion Implicit Models)}
+Diffusion models are generative models that learn to represent data distributions \(p(x_0)\) by progressively adding noise to the data in a series of steps, producing a sequence of latent variables \(\{x_N, \ldots, x_0\}\). The standard diffusion process is a Markovian process~\citep{ho2020denoising,nichol2021improved}, where noise is added at each step of the forward process and removed during the reverse process, ultimately generating new samples by reversing the added noise.
+
+Denoising Diffusion Implicit Models (DDIM)~\citep{song2020denoising} are a variation of the traditional diffusion models that introduce a non-Markovian process to improve the efficiency of sampling. DDIM modifies the forward and reverse processes to be deterministic, maintaining a direct mapping between \(x_n\) and \(x_0\) without adding stochastic noise at each step. This approach enables faster sampling with fewer diffusion steps, while still producing high-quality samples.
+
+In DDIM, the forward process is re-parameterized as:
+\begin{equation}
+\begin{aligned}
+x_n = \sqrt{\bar{\alpha}_n} \, x_0 + \sqrt{1 - \bar{\alpha}_n} \, \epsilon ,
+\end{aligned}
+\end{equation}
+where \(\bar{\alpha}_n = \prod_{s=1}^n \left(1 - \beta_s\right)\), and \(\epsilon \sim \mathcal{N}(0, I)\). This equation is used for both the forward and reverse processes, which ensures deterministic transitions between the steps.
+
+The reverse process in DDIM is defined by:
+\begin{equation}
+\begin{aligned}
+x_{n-1} = \sqrt{\bar{\alpha}_{n-1}} \, x_0 + \sqrt{1 - \bar{\alpha}_{n-1}} \, \epsilon_\theta\left(x_n, n\right) ,
+\end{aligned}
+\end{equation}
+where \(\epsilon_\theta\left(x_n, n\right)\) is the predicted noise at step \(n\), parameterized by a neural network. The deterministic nature of DDIM allows it to sample more efficiently compared to traditional diffusion models, reducing the number of necessary diffusion steps while maintaining or even improving the sample quality.
+
+In this work, we utilize DDIM due to its ability to strike a balance between sample generation speed and flexibility, enabling us to generate samples faster with fewer diffusion steps, without sacrificing performance compared to the standard diffusion model.

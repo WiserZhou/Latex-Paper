@@ -1,0 +1,17 @@
+\begin{abstract}
+% 简述这篇paper主要的研究内容
+In this paper, we study the problem of procedure planning in instructional videos, which involves making goal-directed plans based on current visual observations in unstructured real-life videos.
+% 讲述进来的工作的主要内容
+Prior research has approached this as a distribution fitting problem, utilizing diffusion models to represent the entire sequence of actions, thereby transforming the planning challenge into one of sampling from this distribution.
+% 在这个基础上我们的工作是什么
+Building on this foundation, we introduce a novel approach by incorporating temporal diffusion model, where the temporal interpolation expands the previously non-existent temporal logical relationships. 
+% 阐述插值器的细节
+In terms of details, we employ an interpolating predictor to guide the intermediate process within U-Net, using the start and end frames as inputs.
+This involves extracting potential features through an encoder and applying an interpolation strategy to derive potential features for the intermediate frames.
+% 更进一步
+Furthermore, to make sure the accuracy pf actions in outputs, we also add mask strategy both in inference and loss calculation.
+% Furthermore, to enhance the temporal logic between actions, we leverage a large language model (LLM) to guide the logical sequence of actions.
+% We validate our approach experimentally on the CrossTask, COIN, and NIV datasets. 
+Results across these three datasets of varying scales demonstrate that our MTID model achieves state-of-the-art performance on several key metrics. 
+The code and trained model are available at \href{https://github.com/WiserZhou/MTID}{https://github.com/WiserZhou/MTID}.
+\end{abstract}
