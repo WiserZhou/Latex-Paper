@@ -1,0 +1,20 @@
+%\subsubsection{Denoising Diffusion Implicit Models for Training and Inference}
+
+\subsubsection{Preliminaries}
+\label{method21}
+
+Denoising Diffusion Implicit Model (DDIM)~\citep{song2020denoising} improves sampling efficiency by making the reverse process deterministic, which reduces stochastic noise and establishes a direct mapping between the initial noise matrix \(\hat{x}_N\) and the final output matrix \(\hat{x}_0\) across $N$ non-Markovian steps. This approach reduces the number of steps needed while preserving sample quality. 
+
+Based on these advantages, we adopt the DDIM sampling strategy with the U-Net model~\citep{ronneberger2015u} for its ability to accelerate sampling with fewer steps while maintaining strong performance. This is especially useful in scenarios where the quality of results remains comparable to that of Denoising Diffusion Probabilistic Model (DDPM)~\citep{ho2020denoising,nichol2021improved}, despite its deterministic approach.
+
+The forward process is parameterized as:
+\begin{equation}
+\hat{x}_N = \sqrt{\bar{\alpha }_N} \, \hat{x}_0 + \sqrt{1 - \bar{\alpha }_N} \, \epsilon,
+\end{equation}
+where \(\bar{\alpha }_N = \prod_{s=1}^N \alpha_s\), \( \epsilon \sim \mathcal{N}(0, I)\), and \(\alpha_s = 1 - \beta_s\), which represents the noise schedule controlling the amount of Gaussian noise added at each step \(s\). The forward process starts with the original data \(\hat{x}_0\) and progressively adds noise, resulting in the final noisy matrix \(\hat{x}_N\).
+
+In DDIM, the reverse process is defined as:
+\begin{equation}
+\hat{x}_{n-1} = \sqrt{\bar{\alpha }_{n-1}} \left( \frac{\hat{x}_{n} - \sqrt{1 - \bar{\alpha }_{n}} f_{\theta}\left(\hat{x}_{n}\right)}{\sqrt{\bar{\alpha }_{n}}} \right) + \sqrt{1 - \bar{\alpha }_{n-1}} \cdot f_{\theta}\left(\hat{x}_{n}\right),
+\end{equation}
+where \( f_{\theta}\left(\hat{x}_{n}\right) \) is the neural network's prediction of the noise component added to \( \hat{x}_n \). This reverse process reconstructs the original data \(\hat{x}_0\) from \(\hat{x}_N\) by iteratively removing the noise introduced during the forward diffusion process. Unlike DDPM, DDIM's deterministic reverse process improves sampling efficiency by directly mapping the noisy input \(\hat{x}_N\) to the final output \(\hat{x}_0\). This makes DDIM an efficient method for generating or enhancing samples with fewer steps.

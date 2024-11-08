@@ -1,0 +1,203 @@
+\begin{thebibliography}{39}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abu~Farha \& Gall(2019)Abu~Farha and Gall]{abu2019uncertainty}
+Yazan Abu~Farha and Juergen Gall.
+\newblock Uncertainty-aware anticipation of activities.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops}, pp.\  0--0, 2019.
+
+\bibitem[Alayrac et~al.(2016)Alayrac, Bojanowski, Agrawal, Sivic, Laptev, and Lacoste-Julien]{alayrac2016unsupervised}
+Jean-Baptiste Alayrac, Piotr Bojanowski, Nishant Agrawal, Josef Sivic, Ivan Laptev, and Simon Lacoste-Julien.
+\newblock Unsupervised learning from narrated instruction videos.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pp.\  4575--4583, 2016.
+
+\bibitem[Bhaskara et~al.(2024)Bhaskara, Viswanath, and Bera]{bhaskara2024trajectory}
+Rashmi Bhaskara, Hrishikesh Viswanath, and Aniket Bera.
+\newblock Trajectory prediction for robot navigation using flow-guided markov neural operator.
+\newblock In \emph{2024 IEEE International Conference on Robotics and Automation (ICRA)}, pp.\  15209--15216. IEEE, 2024.
+
+\bibitem[Bi et~al.(2021)Bi, Luo, and Xu]{bi2021procedure}
+Jing Bi, Jiebo Luo, and Chenliang Xu.
+\newblock Procedure planning in instructional videos via contextual modeling and model-based policy learning.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision}, pp.\  15611--15620, 2021.
+
+\bibitem[Carreira \& Zisserman(2017)Carreira and Zisserman]{carreira2017quo}
+Joao Carreira and Andrew Zisserman.
+\newblock Quo vadis, action recognition? a new model and the kinetics dataset.
+\newblock In \emph{proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}, pp.\  6299--6308, 2017.
+
+\bibitem[Chang et~al.(2020)Chang, Huang, Xu, Adeli, Fei-Fei, and Niebles]{chang2020procedure}
+Chien-Yi Chang, De-An Huang, Danfei Xu, Ehsan Adeli, Li~Fei-Fei, and Juan~Carlos Niebles.
+\newblock Procedure planning in instructional videos.
+\newblock In \emph{European Conference on Computer Vision}, pp.\  334--350. Springer, 2020.
+
+\bibitem[Croitoru et~al.(2023)Croitoru, Hondru, Ionescu, and Shah]{croitoru2023diffusion}
+Florinel-Alin Croitoru, Vlad Hondru, Radu~Tudor Ionescu, and Mubarak Shah.
+\newblock Diffusion models in vision: A survey.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, 45\penalty0 (9):\penalty0 10850--10869, 2023.
+
+\bibitem[Ehsani et~al.(2018)Ehsani, Bagherinezhad, Redmon, Mottaghi, and Farhadi]{ehsani2018let}
+Kiana Ehsani, Hessam Bagherinezhad, Joseph Redmon, Roozbeh Mottaghi, and Ali Farhadi.
+\newblock Who let the dogs out? modeling dog behavior from visual data.
+\newblock In \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}, pp.\  4051--4060, 2018.
+
+\bibitem[Gao et~al.(2023)Gao, Zhou, Cheng, and Yan]{gao2023masked}
+Shanghua Gao, Pan Zhou, Ming-Ming Cheng, and Shuicheng Yan.
+\newblock Masked diffusion transformer is a strong image synthesizer.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision}, pp.\  23164--23173, 2023.
+
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In \emph{Proceedings of the IEEE conference on computer vision and pattern recognition}, pp.\  770--778, 2016.
+
+\bibitem[Henschel et~al.(2024)Henschel, Khachatryan, Hayrapetyan, Poghosyan, Tadevosyan, Wang, Navasardyan, and Shi]{henschel2024streamingt2v}
+Roberto Henschel, Levon Khachatryan, Daniil Hayrapetyan, Hayk Poghosyan, Vahram Tadevosyan, Zhangyang Wang, Shant Navasardyan, and Humphrey Shi.
+\newblock Streamingt2v: Consistent, dynamic, and extendable long video generation from text.
+\newblock \emph{arXiv preprint arXiv:2403.14773}, 2024.
+
+\bibitem[Hershey et~al.(2017)Hershey, Chaudhuri, Ellis, Gemmeke, Jansen, Moore, Plakal, Platt, Saurous, Seybold, et~al.]{hershey2017cnn}
+Shawn Hershey, Sourish Chaudhuri, Daniel~PW Ellis, Jort~F Gemmeke, Aren Jansen, R~Channing Moore, Manoj Plakal, Devin Platt, Rif~A Saurous, Bryan Seybold, et~al.
+\newblock Cnn architectures for large-scale audio classification.
+\newblock In \emph{2017 ieee international conference on acoustics, speech and signal processing (icassp)}, pp.\  131--135. IEEE, 2017.
+
+\bibitem[Ho et~al.(2020)Ho, Jain, and Abbeel]{ho2020denoising}
+Jonathan Ho, Ajay Jain, and Pieter Abbeel.
+\newblock Denoising diffusion probabilistic models.
+\newblock \emph{Advances in neural information processing systems}, 33:\penalty0 6840--6851, 2020.
+
+\bibitem[Jiang et~al.(2024)Jiang, Wu, Yang, Si, Lin, Qiao, Loy, and Liu]{jiang2024videobooth}
+Yuming Jiang, Tianxing Wu, Shuai Yang, Chenyang Si, Dahua Lin, Yu~Qiao, Chen~Change Loy, and Ziwei Liu.
+\newblock Videobooth: Diffusion-based video generation with image prompts.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  6689--6700, 2024.
+
+\bibitem[Khachatryan et~al.(2023)Khachatryan, Movsisyan, Tadevosyan, Henschel, Wang, Navasardyan, and Shi]{khachatryan2023text2video}
+Levon Khachatryan, Andranik Movsisyan, Vahram Tadevosyan, Roberto Henschel, Zhangyang Wang, Shant Navasardyan, and Humphrey Shi.
+\newblock Text2video-zero: Text-to-image diffusion models are zero-shot video generators.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision}, pp.\  15954--15964, 2023.
+
+\bibitem[Kingma(2014)]{kingma2014adam}
+Diederik~P Kingma.
+\newblock Adam: A method for stochastic optimization.
+\newblock \emph{arXiv preprint arXiv:1412.6980}, 2014.
+
+\bibitem[Li et~al.(2023)Li, Geng, Li, Chen, Tang, Lu, and Zhou]{li2023skip}
+Zhiheng Li, Wenjia Geng, Muheng Li, Lei Chen, Yansong Tang, Jiwen Lu, and Jie Zhou.
+\newblock Skip-plan: Procedure planning in instructional videos via condensed action space learning.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision}, pp.\  10297--10306, 2023.
+
+\bibitem[Liao et~al.(2024)Liao, Li, Shen, Zeng, Liao, Li, and Xu]{liao2024bat}
+Haicheng Liao, Zhenning Li, Huanming Shen, Wenxuan Zeng, Dongping Liao, Guofa Li, and Chengzhong Xu.
+\newblock Bat: Behavior-aware human-like trajectory prediction for autonomous driving.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial Intelligence}, volume~38, pp.\  10332--10340, 2024.
+
+\bibitem[Miech et~al.(2019)Miech, Zhukov, Alayrac, Tapaswi, Laptev, and Sivic]{miech2019howto100m}
+Antoine Miech, Dimitri Zhukov, Jean-Baptiste Alayrac, Makarand Tapaswi, Ivan Laptev, and Josef Sivic.
+\newblock Howto100m: Learning a text-video embedding by watching hundred million narrated video clips.
+\newblock In \emph{Proceedings of the IEEE/CVF international conference on computer vision}, pp.\  2630--2640, 2019.
+
+\bibitem[Misra(2019)]{misra2019mish}
+Diganta Misra.
+\newblock Mish: A self regularized non-monotonic activation function.
+\newblock \emph{arXiv preprint arXiv:1908.08681}, 2019.
+
+\bibitem[Nagasinghe et~al.(2024)Nagasinghe, Zhou, Gunawardhana, Min, Harari, and Khan]{nagasinghe2024not}
+Kumaranage Ravindu~Yasas Nagasinghe, Honglu Zhou, Malitha Gunawardhana, Martin~Renqiang Min, Daniel Harari, and Muhammad~Haris Khan.
+\newblock Why not use your textbook? knowledge-enhanced procedure planning of instructional videos.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  18816--18826, 2024.
+
+\bibitem[Nichol \& Dhariwal(2021)Nichol and Dhariwal]{nichol2021improved}
+Alexander~Quinn Nichol and Prafulla Dhariwal.
+\newblock Improved denoising diffusion probabilistic models.
+\newblock In \emph{International conference on machine learning}, pp.\  8162--8171. PMLR, 2021.
+
+\bibitem[Niu et~al.(2024)Niu, Guo, Chen, Lin, and Chang]{niu2024schema}
+Yulei Niu, Wenliang Guo, Long Chen, Xudong Lin, and Shih-Fu Chang.
+\newblock Schema: State changes matter for procedure planning in instructional videos.
+\newblock \emph{arXiv preprint arXiv:2403.01599}, 2024.
+
+\bibitem[Rombach et~al.(2022)Rombach, Blattmann, Lorenz, Esser, and Ommer]{rombach2022high}
+Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj{\"o}rn Ommer.
+\newblock High-resolution image synthesis with latent diffusion models.
+\newblock In \emph{Proceedings of the IEEE/CVF conference on computer vision and pattern recognition}, pp.\  10684--10695, 2022.
+
+\bibitem[Ronneberger et~al.(2015)Ronneberger, Fischer, and Brox]{ronneberger2015u}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In \emph{Medical image computing and computer-assisted intervention--MICCAI 2015: 18th international conference, Munich, Germany, October 5-9, 2015, proceedings, part III 18}, pp.\  234--241. Springer, 2015.
+
+\bibitem[Sermanet et~al.(2024)Sermanet, Ding, Zhao, Xia, Dwibedi, Gopalakrishnan, Chan, Dulac-Arnold, Maddineni, Joshi, et~al.]{sermanet2024robovqa}
+Pierre Sermanet, Tianli Ding, Jeffrey Zhao, Fei Xia, Debidatta Dwibedi, Keerthana Gopalakrishnan, Christine Chan, Gabriel Dulac-Arnold, Sharath Maddineni, Nikhil~J Joshi, et~al.
+\newblock Robovqa: Multimodal long-horizon reasoning for robotics.
+\newblock In \emph{2024 IEEE International Conference on Robotics and Automation (ICRA)}, pp.\  645--652. IEEE, 2024.
+
+\bibitem[Song et~al.(2020)Song, Meng, and Ermon]{song2020denoising}
+Jiaming Song, Chenlin Meng, and Stefano Ermon.
+\newblock Denoising diffusion implicit models.
+\newblock \emph{arXiv preprint arXiv:2010.02502}, 2020.
+
+\bibitem[Srinivas et~al.(2018)Srinivas, Jabri, Abbeel, Levine, and Finn]{srinivas2018universal}
+Aravind Srinivas, Allan Jabri, Pieter Abbeel, Sergey Levine, and Chelsea Finn.
+\newblock Universal planning networks: Learning generalizable representations for visuomotor control.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  4732--4741. PMLR, 2018.
+
+\bibitem[Sun et~al.(2022)Sun, Huang, Lu, Liu, Zhou, and Garg]{sun2022plate}
+Jiankai Sun, De-An Huang, Bo~Lu, Yun-Hui Liu, Bolei Zhou, and Animesh Garg.
+\newblock Plate: Visually-grounded planning with transformers in procedural tasks.
+\newblock \emph{IEEE Robotics and Automation Letters}, 7\penalty0 (2):\penalty0 4924--4930, 2022.
+
+\bibitem[Tang et~al.(2019)Tang, Ding, Rao, Zheng, Zhang, Zhao, Lu, and Zhou]{tang2019coin}
+Yansong Tang, Dajun Ding, Yongming Rao, Yu~Zheng, Danyang Zhang, Lili Zhao, Jiwen Lu, and Jie Zhou.
+\newblock Coin: A large-scale dataset for comprehensive instructional video analysis.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  1207--1216, 2019.
+
+\bibitem[Wang et~al.(2023{\natexlab{a}})Wang, Lin, Du, Meng, and Zheng]{wang2023event}
+An-Lan Wang, Kun-Yu Lin, Jia-Run Du, Jingke Meng, and Wei-Shi Zheng.
+\newblock Event-guided procedure planning from instructional videos with text supervision.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on Computer Vision}, pp.\  13565--13575, 2023{\natexlab{a}}.
+
+\bibitem[Wang et~al.(2023{\natexlab{b}})Wang, Wu, Guo, and Wang]{wang2023pdpp}
+Hanlin Wang, Yilu Wu, Sheng Guo, and Limin Wang.
+\newblock Pdpp: Projected diffusion for procedure planning in instructional videos.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  14836--14845, 2023{\natexlab{b}}.
+
+\bibitem[Wang et~al.(2024)Wang, He, Fan, Li, Chen, and Zhang]{wang2024driving}
+Yuqi Wang, Jiawei He, Lue Fan, Hongxin Li, Yuntao Chen, and Zhaoxiang Zhang.
+\newblock Driving into the future: Multiview visual forecasting and planning with world model for autonomous driving.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  14749--14759, 2024.
+
+\bibitem[Weng et~al.(2024)Weng, Feng, Wang, Dai, Wang, Yin, Zhao, Qiu, Bao, Yuan, et~al.]{weng2024art}
+Wenming Weng, Ruoyu Feng, Yanhui Wang, Qi~Dai, Chunyu Wang, Dacheng Yin, Zhiyuan Zhao, Kai Qiu, Jianmin Bao, Yuhui Yuan, et~al.
+\newblock Art-v: Auto-regressive text-to-video generation with diffusion models.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  7395--7405, 2024.
+
+\bibitem[Wu \& He(2018)Wu and He]{wu2018group}
+Yuxin Wu and Kaiming He.
+\newblock Group normalization.
+\newblock In \emph{Proceedings of the European conference on computer vision (ECCV)}, pp.\  3--19, 2018.
+
+\bibitem[Zhao et~al.(2022)Zhao, Hadji, Dvornik, Derpanis, Wildes, and Jepson]{zhao2022p3iv}
+He~Zhao, Isma Hadji, Nikita Dvornik, Konstantinos~G Derpanis, Richard~P Wildes, and Allan~D Jepson.
+\newblock P3iv: Probabilistic procedure planning from instructional videos with weak supervision.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  2938--2948, 2022.
+
+\bibitem[Zhou et~al.(2024{\natexlab{a}})Zhou, Yang, Wang, Luo, and Loy]{zhou2024upscale}
+Shangchen Zhou, Peiqing Yang, Jianyi Wang, Yihang Luo, and Chen~Change Loy.
+\newblock Upscale-a-video: Temporal-consistent diffusion model for real-world video super-resolution.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  2535--2545, 2024{\natexlab{a}}.
+
+\bibitem[Zhou et~al.(2024{\natexlab{b}})Zhou, Zhou, Cheng, Feng, and Hou]{zhou2024storydiffusion}
+Yupeng Zhou, Daquan Zhou, Ming-Ming Cheng, Jiashi Feng, and Qibin Hou.
+\newblock Storydiffusion: Consistent self-attention for long-range image and video generation.
+\newblock \emph{arXiv preprint arXiv:2405.01434}, 2024{\natexlab{b}}.
+
+\bibitem[Zhukov et~al.(2019)Zhukov, Alayrac, Cinbis, Fouhey, Laptev, and Sivic]{zhukov2019cross}
+Dimitri Zhukov, Jean-Baptiste Alayrac, Ramazan~Gokberk Cinbis, David Fouhey, Ivan Laptev, and Josef Sivic.
+\newblock Cross-task weakly supervised learning from instructional videos.
+\newblock In \emph{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pp.\  3537--3545, 2019.
+
+\end{thebibliography}

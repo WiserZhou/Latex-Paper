@@ -1,24 +1,36 @@
-\begin{table}[t]
+
+
+\begin{table}[htbp]
 \centering
-\caption{Comparisons with other methods on COIN dataset.}
-\scalebox{0.95}{
-\begin{tabular}{l ccc c ccc}
+\caption{Comparisons on COIN and NIV datasets.}
+\scalebox{0.83}{
+\begin{tabular}{>{\arraybackslash}p{2cm} cc c cc >{\arraybackslash}p{2cm} cc c cc}
 \toprule
-& \multicolumn{3}{c}{$T$ = 3} & & \multicolumn{3}{c}{$T$ = 4} \\ 
-\cline{2-4} \cline{6-8}
-{Models}           & SR$\uparrow$    & mAcc$\uparrow$   & mIoU$\uparrow$  &   & SR$\uparrow$    & mAcc$\uparrow$   & mIoU$\uparrow$ \\ \midrule
-Random       &   $<$0.01    &    $<$0.01    &    \color{gray}2.47    &  &   $<$0.01    &    $<$0.01    &    \color{gray}2.32    \\
-Retrieval       &   4.38    &    17.40    &    \color{gray}32.06    &  &   2.71    &    14.29    &    \color{gray}36.97    \\
-{DDN}              &   13.90    &    20.19    &    \color{gray}64.78    &  &   11.13    &    17.71    &    \color{gray}68.06    \\
-{P$^3$IV}             &   15.40    &   21.67    &   \color{gray}76.31   &    &   11.32    &   18.85     &   \color{gray}70.53   \\
-{EGPP}             &   19.57   &   31.42 & \bf \color{gray}84.95 & & 13.59 & 26.72 & \bf \color{gray}84.72 \\
-{PDPP}             &   21.33   &   45.62 & \underline{51.82} & & 14.41 & 44.10 & 51.39 \\
-{KEPP}             &   20.25   &   39.87 & 51.72 & & 15.63 & 39.53 & \underline{53.27} \\
-{SCHEMA} & \bf 32.09 &  \underline{49.84} & \color{gray}\underline{83.83} & & \bf 22.02 & \underline{45.33} & \color{gray}\underline{83.47} \\
+& \multicolumn{2}{c}{$T$ = 3} & & \multicolumn{2}{c}{$T$ = 4} &
+& \multicolumn{2}{c}{$T$ = 3} & & \multicolumn{2}{c}{$T$ = 4} \\ 
+\cline{2-3} \cline{5-6} \cline{8-9} \cline{11-12}
+{Models(COIN)}  & SR$\uparrow$    & mAcc$\uparrow$   &   & SR$\uparrow$    & mAcc$\uparrow$ &
+{Models(NIV)}   & SR$\uparrow$    & mAcc$\uparrow$   &   & SR$\uparrow$    & mAcc$\uparrow$ \\ 
 \midrule
-{MTID (Ours)} &  \underline{28.84} & \bf 50.44 & \bf 57.86 & & \underline{21.64} & \bf 48.06 & \bf 59.52 \\
+Random       & $<$0.01    & $<$0.01    &  & $<$0.01    & $<$0.01    &
+Random       & 2.21       & 4.07       &  & 1.12       & 2.73       \\
+DDN          & 13.90      & 20.19      &  & 11.13      & 17.71      &
+DDN          & 18.41      & 32.54      &  & 15.97      & 27.09      \\
+P$^3$IV      & 15.40      & 21.67      &  & 11.32      & 18.85      &
+Ext-GAIL     & 22.11      & 42.20      &  & 19.91      & 36.31      \\
+EGPP         & 19.57      & 31.42      &  & 13.59      & 26.72      &
+P$^3$IV      & 24.68      & \underline{49.01} &  & 20.14 & 38.36    \\
+PDPP         & 21.33      & 45.62      &  & 14.41      & 44.10      &
+EGPP         & 26.05      & \bf 51.24  &  & 21.37      & \underline{41.96} \\
+KEPP         & 20.25      & 39.87      &  & 15.63      & 39.53      &
+KEPP         & 24.44      & 43.46      &  & 22.71      & 41.59      \\
+SCHEMA       & \bf 32.09  & \underline{49.84} &  & \underline{22.02} & \underline{45.33} &
+SCHEMA       & \underline{27.93} & 41.64 &  & \underline{23.26} & 39.93 \\
+\midrule
+MTID (Ours)  & \underline{30.90} & \bf 52.17 &  & \bf 23.10 & \bf 49.71 &
+MTID (Ours)  & \bf 29.63 & 48.02 &  & \bf 25.76 & \bf 46.62 \\
 \bottomrule
 \end{tabular}
 }
-\label{tab:coin}
+\label{tab:combined}
 \end{table}

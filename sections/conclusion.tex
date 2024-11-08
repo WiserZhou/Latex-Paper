@@ -1,8 +1,14 @@
 \section{Conclusion}
-In this work, we introduced MTID, a novel masked temporal interpolation diffusion model designed for procedure planning in instructional videos. Our approach employs an interpolating predictor within a U-Net architecture, leveraging start and end frame features to infer intermediate states. By integrating a masking strategy during inference and loss calculation, we ensure the accuracy of the generated action sequences. Extensive experiments across various datasets confirm our model's superior performance in key metrics. Future research directions include establishing a benchmark dataset specifically aimed at tracking state changes in instructional content and exploring the implications of state change tracking in other procedural learning tasks such as pre-training and future step forecasting. Moreover, the challenge of multimodal procedural planning, involving the coherent generation of textual and visual plans, represents a promising area for further investigation.
+In this paper, we introduced the Masked Temporal Interpolation Diffusion (MTID) model, specifically designed for procedure planning in instructional videos. Our model employs a latent space temporal logical interpolation module within a U-Net architecture to capture intermediate states and temporal relationships between actions. By incorporating a task-adaptive masked strategy during both inference and loss calculation, MTID improves the accuracy and consistency of generated action sequences. Extensive experiments across the CrossTask, COIN, and NIV datasets demonstrate that our model consistently outperforms existing methods on key metrics.
+For future work, we aim to further optimize the memory efficiency of the model to handle larger datasets more effectively. Additionally, refining the mask mechanism to enhance control over intermediate state generation and exploring more diverse interpolation strategies remain promising directions. We also plan to extend the application of the temporal interpolation module to broader procedural learning tasks, including more complex conditional planning scenarios.
 
-\subsubsection*{Acknowledgments}
-Use unnumbered third level headings for the acknowledgments. All
-acknowledgments, including those to funding agencies, go at the end of the paper.
 
-This work is supported by U.S. DARPA KAIROS Program No. FA8750-19-2-1004. The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies, either expressed or implied, of DARPA, or the U.S. Government. The U.S. Government is authorized to reproduce and distribute reprints for governmental purposes notwithstanding any copyright annotation therein.
+% \section{Conclusion}
+
+
+
+% \subsubsection*{Acknowledgments}
+% Use unnumbered third level headings for the acknowledgments. All
+% acknowledgments, including those to funding agencies, go at the end of the paper.
+
+% This work is supported by U.S. DARPA KAIROS Program No. FA8750-19-2-1004. The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies, either expressed or implied, of DARPA, or the U.S. Government. The U.S. Government is authorized to reproduce and distribute reprints for governmental purposes notwithstanding any copyright annotation therein.

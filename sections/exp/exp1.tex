@@ -1,2 +1,0 @@
-\subsection{Implementation details}
-We use the basic U-Net~\citep{ronneberger2015u} as our learnable model for diffusion model, in which a modification is made by using a convolution operation along the planning horizon dimension for downsampling rather than max-pooling by \citet{wang2023pdpp}. For training, we use the linear warm-up training scheme to optimize our model. We train different steps for the three datasets, corresponding to their scales. All our experiments are conducted with ADAM~\citep{kingma2014adam} on 8 NVIDIA GeForce RTX 3090 GPUs.

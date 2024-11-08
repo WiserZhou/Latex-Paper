@@ -1,17 +1,12 @@
 \begin{abstract}
-% 简述这篇paper主要的研究内容
-In this paper, we study the problem of procedure planning in instructional videos, which involves making goal-directed plans based on current visual observations in unstructured real-life videos.
-% 讲述进来的工作的主要内容
-Prior research has approached this as a distribution fitting problem, utilizing diffusion models to represent the entire sequence of actions, thereby transforming the planning challenge into one of sampling from this distribution.
-% 在这个基础上我们的工作是什么
-Building on this foundation, we introduce a novel approach by incorporating temporal diffusion model, where the temporal interpolation expands the previously non-existent temporal logical relationships. 
-% 阐述插值器的细节
-In terms of details, we employ an interpolating predictor to guide the intermediate process within U-Net, using the start and end frames as inputs.
-This involves extracting potential features through an encoder and applying an interpolation strategy to derive potential features for the intermediate frames.
-% 更进一步
-Furthermore, to make sure the accuracy pf actions in outputs, we also add mask strategy both in inference and loss calculation.
-% Furthermore, to enhance the temporal logic between actions, we leverage a large language model (LLM) to guide the logical sequence of actions.
-% We validate our approach experimentally on the CrossTask, COIN, and NIV datasets. 
-Results across these three datasets of varying scales demonstrate that our MTID model achieves state-of-the-art performance on several key metrics. 
-The code and trained model are available at \href{https://github.com/WiserZhou/MTID}{https://github.com/WiserZhou/MTID}.
+In this paper, we address the challenge of procedure planning in instructional videos, aiming to generate coherent and task-aligned action sequences from start and end visual observations. 
+% pre
+Previous work has mainly relied on text-level supervision to bridge the gap between observed states and unobserved actions, but it struggles with capturing intricate temporal relationships among actions. 
+% propose
+Building on these efforts, we propose the Masked Temporal Interpolation Diffusion (MTID) model that introduces a latent space temporal logical interpolation module within the diffusion model. 
+% module
+This module leverages a learnable interpolation matrix to generate intermediate latent features, thereby augmenting visual supervision with richer mid-state details. By integrating this enriched supervision into the model, we enable end-to-end training tailored to task-specific requirements, significantly enhancing the model's capacity to predict temporally coherent action sequences. 
+Additionally, we introduce an action-aware mask projection mechanism to restrict the action generation space, combined with a task-adaptive masked proximity loss to prioritize more accurate reasoning results close to the given start and end states over those in intermediate steps. Simultaneously, it filters out task-irrelevant action predictions, leading to contextually aware action sequences.
+% exp
+Experimental results across three widely used benchmark datasets demonstrate that our MTID achieves promising action planning performance on most metrics. The code is available at \href{https://anonymous.4open.science/r/MTID-E2E3/README.md}{https://anonymous.4open.science/r/MTID-E2E3/README.md}.
 \end{abstract}

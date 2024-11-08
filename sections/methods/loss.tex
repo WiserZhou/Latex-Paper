@@ -1,0 +1,36 @@
+\subsection{Task-Adaptive Masked Proximity Loss}
+\label{method3}
+
+
+Our training process consists of two main stages: 
+(a) training a task classifier to extract task-related information based on the given start and goal visual observations.
+(b) utilizing a masked temporal interpolation diffusion model $f_\theta$ to fit the distribution of the target action sequence.
+
+
+In the first stage, we minimize the cross-entropy loss between the predicted and true task classes to optimize the transformer-based task classifier.
+
+In the second stage, we employ a diffusion-based training scheme and introduce a task-adaptive masked proximity loss to model the target action sequence, defined as follows:
+\begin{equation}
+    \mathcal{L}_{\mathrm{diff}} = \sum_{t=1}^{T} \sum_{d=1}^{A} w_t \cdot m_{t,d} \cdot (a_{t,d} - \bar{a}_{t,d})^2,
+\end{equation}
+where $a_{t,d}$ refers to the predicted action ID extracted from the final output $\hat{x}_0$, and $\bar{a}_{t,d}$ denotes the ground truth action. This loss function computes the weighted mean squared error (MSE) between the predicted and ground truth actions at each planning time step. The term $w_t$ is a time-dependent weight that controls the contribution of each time step, and $m_{t,d}$ is a mask matrix that highlights specific action dimensions or planning time steps according to the task requirements.
+
+The weight \( w_t \) is defined as:
+\begin{equation}
+w_t = w_0 + (1 - w_0) \cdot \frac{\min(t, T - t + 1) - 1}{\lceil T/2 \rceil - 1},
+\end{equation}
+where \( w_0 \) is the initial weight. Since the task only observes the start and goal features $V_s$ and $V_g$, higher weights are assigned to predictions near these endpoints, improving performance for $a_1$ and $a_T$. Lower weights are applied to the middle steps, ensuring the model prioritizes reliable endpoint information. Unlike \citet{wang2023pdpp}, who focus on endpoint weighting, our approach uses intermediate latent features for continuous supervision. This provides more comprehensive guidance, allowing us to apply a weighted gradient loss for better alignment of the entire action sequence.
+
+Additionally, a mask matrix \( m_{t,d} \) is applied to selectively emphasize certain planning time steps and action dimensions. This matrix is defined as:
+\begin{equation}
+      m_{t,d} = \begin{cases}
+    \rho , & \text{if } \hat{a}_{t,d} \text{ is active} \\
+    1 , & \text{otherwise}
+  \end{cases},
+\end{equation}
+where \( \rho \) is a scaling coefficient applied when the action is active, thereby increasing the penalty for unrelated actions. By this mechanism, actions that are unrelated to the current task are discouraged from appearing in the output, ultimately enhancing planning accuracy.
+
+% In our implementation, \( \rho \) is set to 1.1, and $w_0$ is set to 6.
+% ablation studies
+
+
