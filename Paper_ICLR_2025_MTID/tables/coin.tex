@@ -1,0 +1,38 @@
+\begin{table}[htbp]
+\centering
+\caption{ \textcolor{orange}{Comparisons on COIN and NIV datasets. 
+Note: only this table uses the KEPP's settings.
+} }
+\vspace{-3mm}
+\scriptsize
+\scalebox{1.20}{
+\begin{tabular}{p{1.0cm} @{\hspace{0.5em}}c@{\hspace{0.5em}}c@{\hspace{0.5em}}c@{\hspace{0.5em}}
+c@{\hspace{0.5em}}c@{\hspace{0.5em}}c@{\hspace{0.5em}}
+c@{\hspace{0.5em}}c@{\hspace{0.5em}}c@{\hspace{0.5em}}
+c@{\hspace{0.5em}}c@{\hspace{0.5em}}c@{\hspace{0.5em}}
+c@{\hspace{0.5em}}c@{\hspace{0.5em}}c@{\hspace{0.5em}}}
+\toprule
+\multicolumn{1}{c}{} & \multicolumn{7}{c}{\textbf{COIN}} & & \multicolumn{7}{c}{\textbf{NIV}} \\
+\cmidrule(lr){2-8} \cmidrule(lr){10-16}
+{Models}  & \multicolumn{3}{c}{$T$ = 3} & & \multicolumn{3}{c}{$T$ = 4} & & \multicolumn{3}{c}{$T$ = 3} & & \multicolumn{3}{c}{$T$ = 4} \\ 
+\cline{2-4} \cline{6-8} \cline{10-12} \cline{14-16}
+\multicolumn{1}{c}{} & SR$\uparrow$ & mAcc$\uparrow$ & mIoU$\uparrow$ & & SR$\uparrow$ & mAcc$\uparrow$ & mIoU$\uparrow$ & & SR$\uparrow$ & mAcc$\uparrow$ & mIoU$\uparrow$ & & SR$\uparrow$ & mAcc$\uparrow$ & mIoU$\uparrow$ \\
+\midrule
+Random       & $<$0.01    & $<$0.01    & \color{gray}2.47 & & $<$0.01    & $<$0.01    & \color{gray}2.32 & & 2.21       & 4.07       & \color{gray}6.09 & & 1.12       & 2.73       & \color{gray}5.84 \\
+DDN          & 13.90      & 20.19      & \color{gray}64.78 & & 11.13      & 17.71      & \color{gray}68.06 & & 18.41      & 32.54      & \color{gray}56.56 & & 15.97      & 27.09      & \color{gray}53.84 \\
+P$^3$IV      & 15.40      & 21.67      & \color{gray}76.31 & & 11.32      & 18.85      & \color{gray}70.53 & & 24.68      & \underline{49.01}      & \color{gray}74.29 & & 20.14      & 38.36      & \color{gray}67.29 \\
+EGPP         & 19.57      & 31.42      & \color{gray}84.95 & & 13.59      & 26.72      & \color{gray}84.72 & & 26.05      & \bf 51.24      & \color{gray}75.81 & & 21.37      & \underline{41.96}      & \color{gray}74.90 \\
+PDPP         & 19.42   &  43.44      & -           & &  13.67    &  42.58     & -            & &  22.22      &  39.50     &  \color{gray}86.66          & & 21.30   & 39.24     & \color{gray}84.96 \\ 
+KEPP         & 20.25      & 39.87      & \underline{51.72}            & & 15.63      & 39.53      & \underline{53.27}            & & 24.44      & 43.46      & \color{gray}86.67 & & 22.71     & 41.59      & \color{gray}91.49 \\
+SCHEMA       & \bf 32.09      & \underline{49.84}      & \color{gray}83.83 & & \underline{22.02}      & \underline{45.33}      & \color{gray}83.47 & & \underline{27.93}      & 41.64      & \color{gray}76.77 & & \underline{23.26}      & 39.93      & \color{gray}76.75 \\
+\midrule
+MTID & \underline{30.44}     & \bf 51.70      & \bf 59.74            & & \bf 22.74      & \bf 49.90     & \bf 61.25            & & \bf 28.52      & 44.44      & \bf 56.46            & & \bf 24.89     & \bf 44.54      & \bf 57.46 \\
+
+\bottomrule
+\end{tabular}
+}
+\label{tab:combined}
+\vspace{-4mm}
+\end{table}
+
+

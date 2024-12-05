@@ -1,0 +1,7 @@
+\begin{figure}[t]
+    \centering
+\includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{figures/architecture1.png}
+    \caption{Overview of our Masked Temporal Interpolation Diffusion (prediction horizon \( T=3 \)). \textcolor{orange}{With a transformer classifier to guide from observations, $\hat{x}_n$ is processed in a U-Net with latent space module for temporal supervision. Starting with denoising through masked projection, we derive the final actions needed to compute the task-adaptive masked proximity loss for iterative optimization. } }
+    \label{fig:architecture}
+\vspace{-4mm}
+\end{figure}
